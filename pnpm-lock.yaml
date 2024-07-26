@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@primevue/themes':
+        specifier: ^4.0.2
+        version: 4.0.2
       pinia:
         specifier: ^2.1.7
         version: 2.2.0(typescript@5.4.5)(vue@3.4.34(typescript@5.4.5))
@@ -518,6 +521,10 @@ packages:
 
   '@primevue/icons@4.0.2':
     resolution: {integrity: sha512-S1VEpMsx4uUAsTjZtII03LQqgocYwSKbXMF0YDFWybY8r5LaHaveVZxS/i+KbsCLaL18BXJw0L/7L1eQdJHzaA==}
+    engines: {node: '>=12.11.0'}
+
+  '@primevue/themes@4.0.2':
+    resolution: {integrity: sha512-DGrdFOWRUb8/qDX+Hjkg0SkU2hvo6EmEE5/fA/+NSlLAemj5fcR8r3wo9jhFMIU0QVNl17jZycuL5taU0H72BA==}
     engines: {node: '>=12.11.0'}
 
   '@rollup/pluginutils@5.1.0':
@@ -3135,6 +3142,10 @@ snapshots:
       '@primevue/core': 4.0.2(vue@3.4.34(typescript@5.4.5))
     transitivePeerDependencies:
       - vue
+
+  '@primevue/themes@4.0.2':
+    dependencies:
+      '@primeuix/styled': 0.0.5
 
   '@rollup/pluginutils@5.1.0(rollup@4.19.0)':
     dependencies:
