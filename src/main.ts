@@ -9,6 +9,7 @@ import App from './App.vue'
 import router from './router'
 import Button from 'primevue/button'
 import Card from 'primevue/card'
+import Carousel from 'primevue/carousel'
 
 import submissions from './storage/seeds'
 
@@ -16,6 +17,7 @@ const app = createApp(App)
 app.use(submissions)
 app.component('Button', Button)
 app.component('Card', Card)
+app.component('Carousel', Carousel)
 
 app.use(createPinia())
 app.use(PrimeVue, {

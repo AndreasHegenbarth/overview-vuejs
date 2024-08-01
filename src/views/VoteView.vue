@@ -2,7 +2,7 @@
   <Card>
     <template #title>Simple Card</template>
     <template #content>
-      <template v-for="submissions in sortedSubmitssions" v-bind:key="submissions.id">
+      <template v-for="submission in sortedSubmitssions" :key="submission.id">
         <div class="vote">
           <div class="col-2">
             <img src="https://placehold.co/60" alt="Image" />
@@ -10,9 +10,9 @@
           <div>
             <section>
               <div>
-                <h2>{{ submissions.title }}</h2>
-                <span class="vote--button" v-on:click="upvote(submissions.id)">
-                  ^{{ submissions.votes }}
+                <h2>{{ submission.title }}</h2>
+                <span class="vote--button" v-on:click="upvote(submission.id)">
+                  ^{{ submission.votes }}
                 </span>
               </div>
               <div>visitors deserve to see</div>
@@ -63,5 +63,8 @@ export default {
   color: blue;
   font-size: 20px;
   font-weight: bold;
+}
+.bg-primary {
+  background-color: rgb(47, 203, 255);
 }
 </style>
