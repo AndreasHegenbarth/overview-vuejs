@@ -1,89 +1,48 @@
 <template>
-  <div class="card">
-    <Carousel
-      :value="products"
-      :numVisible="7"
-      :numScroll="1"
-      :responsiveOptions="responsiveOptions"
-    >
-      <template #item="slotProps">
-        <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
-          <div class="mb-4">
-            <div class="relative mx-auto">
-              <h3>{{ slotProps.data.day }}</h3>
-
-              <Tag
-                :value="slotProps.data.inventoryStatus"
-                :severity="getSeverity(slotProps.data.inventoryStatus)"
-                class="absolute"
-                style="left: 5px; top: 5px"
-              />
-            </div>
-          </div>
-          <div class="mb-4 font-medium">{{ slotProps.data.name }}</div>
-          <div class="flex justify-between items-center">
-            <div class="mt-0 font-semibold text-xl">${{ slotProps.data.price }}</div>
-            <span>
-              <Button icon="pi pi-heart" severity="secondary" outlined />
-              <Button icon="pi pi-shopping-cart" class="ml-2" />
-            </span>
-          </div>
+  <div class="p-fluid mt-5">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <CalendarWeek />
+      </div>
+    </div>
+    <div class="grid mt-3">
+      <div class="col-4 offset-4">
+        <CalendarEntry />
+      </div>
+      <div class="p-col-2 p-offset-2">
+        <div class="p-float-end">
+          <Button class="p-button-lg mb-2">
+            <i class="pi pi-cog">Settings</i>
+          </Button>
         </div>
-      </template>
-    </Carousel>
+        <CalendarSettings />
+      </div>
+    </div>
   </div>
 </template>
 
+
+
 <script>
-import { ProductService } from '@/service/ProductService'
+import CalendarWeek from '../components/CalendarWeek.vue'
+import CalendarEntry from '../components/CalendarEntry.vue'
+import CalendarSettings from '../components/CalendarSettings.vue'
 
 export default {
-  data() {
-    return {
-      products: null,
-      responsiveOptions: [
-        {
-          breakpoint: '1400px',
-          numVisible: 2,
-          numScroll: 1
-        },
-        {
-          breakpoint: '1199px',
-          numVisible: 3,
-          numScroll: 1
-        },
-        {
-          breakpoint: '767px',
-          numVisible: 2,
-          numScroll: 1
-        },
-        {
-          breakpoint: '575px',
-          numVisible: 1,
-          numScroll: 1
-        }
-      ]
-    }
-  },
-  mounted() {
-    ProductService.getProductsSmall().then((data) => (this.products = data.slice(0, 9)))
-  },
-  methods: {
-    getSeverity(status) {
-      switch (status) {
-        case 'INSTOCK':
-          return 'success'
-
-        case 'LOWSTOCK':
-          return 'warn'
-
-        case 'OUTOFSTOCK':
-          return 'danger'
-
-        default:
-          return null
-      }
-    }
+  name: 'Calendar',
+  components: {
+    CalendarWeek,
+    CalendarEntry,
+    CalendarSettings
   }
 }
 </script>
+
+<style>
+.square {
+  width: 40px;
+  height: 40px;
+  background-color: aquamarine;
+  display: inline-block;
+}
+</style>
